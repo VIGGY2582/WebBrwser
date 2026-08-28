@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.example.AppTest" time="0.02" tests="1" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\T-rex\Desktop\BasicWebBrowser\target\test-classes;C:\Users\T-rex\Desktop\BasicWebBrowser\target\classes;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-controls\21\javafx-controls-21.jar;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-controls\21\javafx-controls-21-win.jar;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-graphics\21\javafx-graphics-21.jar;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-graphics\21\javafx-graphics-21-win.jar;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-base\21\javafx-base-21.jar;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-base\21\javafx-base-21-win.jar;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-web\21\javafx-web-21.jar;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-web\21\javafx-web-21-win.jar;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-media\21\javafx-media-21.jar;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-media\21\javafx-media-21-win.jar;C:\Users\T-rex\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Asia/Calcutta"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="IN"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
+    <property name="sun.java.command" value="C:\Users\T-rex\AppData\Local\Temp\surefire3532824302608218028\surefirebooter-20260612181347757_3.jar C:\Users\T-rex\AppData\Local\Temp\surefire3532824302608218028 2026-06-12T18-13-47_648-jvmRun1 surefire-20260612181347757_1tmp surefire_0-20260612181347757_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\T-rex\Desktop\BasicWebBrowser\target\test-classes;C:\Users\T-rex\Desktop\BasicWebBrowser\target\classes;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-controls\21\javafx-controls-21.jar;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-controls\21\javafx-controls-21-win.jar;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-graphics\21\javafx-graphics-21.jar;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-graphics\21\javafx-graphics-21-win.jar;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-base\21\javafx-base-21.jar;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-base\21\javafx-base-21-win.jar;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-web\21\javafx-web-21.jar;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-web\21\javafx-web-21-win.jar;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-media\21\javafx-media-21.jar;C:\Users\T-rex\.m2\repository\org\openjfx\javafx-media\21\javafx-media-21-win.jar;C:\Users\T-rex\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\T-rex"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-07-16"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-21"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\T-rex\Desktop\BasicWebBrowser"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\T-rex\AppData\Local\Temp\surefire3532824302608218028\surefirebooter-20260612181347757_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="21.0.4+8-LTS-274"/>
+    <property name="user.name" value="T-rex"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\T-rex\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\T-rex\AppData\Local\Temp\"/>
+    <property name="java.version" value="21.0.4"/>
+    <property name="user.dir" value="C:\Users\T-rex\Desktop\BasicWebBrowser"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-21\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files\nodejs\;C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR;C:\ProgramData\chocolatey\bin;C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.11\bin;C:\Program Files\PostgreSQL\18\bin;C:\Users\T-rex\AppData\Local\Programs\Python\Python314\Scripts\;C:\Users\T-rex\AppData\Local\Programs\Python\Python314\;C:\Users\T-rex\anaconda3;C:\Users\T-rex\anaconda3\Library\mingw-w64\bin;C:\Users\T-rex\anaconda3\Library\usr\bin;C:\Users\T-rex\anaconda3\Library\bin;C:\Users\T-rex\anaconda3\Scripts;C:\Users\T-rex\AppData\Local\Microsoft\WindowsApps;C:\Users\T-rex\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\T-rex\AppData\Local\Programs\Ollama;C:\Users\T-rex\Downloads\jdk-21_windows-x64_bin.exe;C:\Users\T-rex\Desktop\sheadule_tracker\flutter\bin;D:\android studio\platform-tools;D:\android studio\tools;C:\Users\T-rex\Desktop\medfind\flutter\bin;C:\Users\T-rex\AppData\Local\Programs\cursor\resources\app\bin;C:\Users\T-rex\AppData\Roaming\npm;C:\Users\T-rex\AppData\Local\Microsoft\WindowsApps;C:\Users\T-rex\AppData\Local\Android\Sdk\platform-tools;C:\Users\T-rex\AppData\Local\Android\Sdk\emulator;C:\Users\T-rex\AppData\Local\Android\Sdk\cmdline-tools\latest\bin;C:\Users\T-rex\AppData\Local\Microsoft\WinGet\Packages\yt-dlp.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-N-120424-g03b9180fe3-win64-gpl\bin;C:\Users\T-rex\anaconda3\Scripts\yt-dlp.exe;C:\Program Files\VideoLAN\VLC;C:\Users\T-rex\AppData\Local\Python\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2025.3.2\bin;C:\Users\T-rex\AppData\Local\Programs\Windsurf\bin;C:\Users\T-rex\AppData\Local\Programs\Antigravity\bin;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="21.0.4+8-LTS-274"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="testApp" classname="org.example.AppTest" time="0.002"/>
+</testsuite>
