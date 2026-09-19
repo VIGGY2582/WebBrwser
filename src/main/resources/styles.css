@@ -5,7 +5,116 @@
     -fx-background-color: #f8fafc;
 }
 
-/* Navigation Bar */
+/* ==========================================================================
+   Tab Bar & Tabs
+   ========================================================================== */
+.tab-bar-container {
+    -fx-background-color: #f1f5f9;
+    -fx-padding: 6px 12px 0px 12px;
+    -fx-spacing: 6px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-border-color: transparent transparent #e2e8f0 transparent;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.tab-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+}
+
+.tab-scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.tab-scroll-pane .scroll-bar:horizontal {
+    -fx-pref-height: 4px;
+    -fx-opacity: 0.4;
+}
+
+.tab-item {
+    -fx-background-color: #e2e8f0;
+    -fx-background-radius: 8px 8px 0 0;
+    -fx-padding: 6px 12px 6px 12px;
+    -fx-spacing: 8px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-cursor: hand;
+    -fx-border-color: #cbd5e1 #cbd5e1 transparent #cbd5e1;
+    -fx-border-radius: 8px 8px 0 0;
+    -fx-border-width: 1px 1px 0 1px;
+}
+
+.tab-item:hover {
+    -fx-background-color: #cbd5e1;
+}
+
+.tab-item.active-tab {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cbd5e1 #cbd5e1 #ffffff #cbd5e1;
+    -fx-border-width: 1px 1px 1px 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 4, 0, 0, -1);
+}
+
+.tab-title {
+    -fx-text-fill: #475569;
+    -fx-font-size: 12px;
+    -fx-font-weight: 500;
+}
+
+.tab-item.active-tab .tab-title {
+    -fx-text-fill: #0f172a;
+    -fx-font-weight: 600;
+}
+
+.tab-close-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-min-width: 18px;
+    -fx-max-width: 18px;
+    -fx-min-height: 18px;
+    -fx-max-height: 18px;
+    -fx-background-radius: 9px;
+    -fx-padding: 0;
+    -fx-alignment: CENTER;
+    -fx-cursor: hand;
+}
+
+.tab-close-btn:hover {
+    -fx-background-color: #fee2e2;
+    -fx-text-fill: #ef4444;
+}
+
+.new-tab-btn {
+    -fx-background-color: #e2e8f0;
+    -fx-text-fill: #475569;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-min-width: 28px;
+    -fx-max-width: 28px;
+    -fx-min-height: 28px;
+    -fx-max-height: 28px;
+    -fx-background-radius: 14px;
+    -fx-padding: 0;
+    -fx-alignment: CENTER;
+    -fx-cursor: hand;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 14px;
+    -fx-border-width: 1px;
+    -fx-margin: 0 0 4px 4px;
+}
+
+.new-tab-btn:hover {
+    -fx-background-color: #3b82f6;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #2563eb;
+}
+
+/* ==========================================================================
+   Navigation Bar
+   ========================================================================== */
 .nav-bar {
     -fx-background-color: #ffffff;
     -fx-padding: 8px 14px 8px 14px;
