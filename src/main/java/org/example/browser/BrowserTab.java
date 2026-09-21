@@ -3,8 +3,10 @@ package org.example.browser;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.concurrent.Worker;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import org.example.database.HistoryDAO;
 
 /**
  * Represents a single browser tab encapsulating its own WebView, WebEngine,
@@ -173,6 +175,17 @@ public class BrowserTab {
                 url.set(newVal);
             } else {
                 url.set("");
+            }
+        });
+
+        // Automatically record visited pages in SQLite History on successful load
+        webEngine.getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
+            if (newState == Worker.State.SUCCEEDED) {
+                String loc = webEngine.getLocation();
+                String pageTitle = webEngine.getTitle();
+                if (loc != null && !loc.trim().isEmpty() && !loc.startsWith("data:") && !loc.equals("about:blank")) {
+                    HistoryDAO.addHistory(pageTitle, loc);
+                }
             }
         });
     }
