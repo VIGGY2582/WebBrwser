@@ -185,6 +185,38 @@
     -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.25), 8, 0, 0, 0);
 }
 
+/* Bookmark Star Toggle Button */
+.star-btn {
+    -fx-background-color: #f1f5f9;
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-min-width: 34px;
+    -fx-max-width: 34px;
+    -fx-min-height: 34px;
+    -fx-max-height: 34px;
+    -fx-background-radius: 17px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 17px;
+    -fx-border-width: 1px;
+    -fx-cursor: hand;
+    -fx-padding: 0;
+    -fx-alignment: CENTER;
+}
+
+.star-btn:hover {
+    -fx-background-color: #fef9c3;
+    -fx-text-fill: #eab308;
+    -fx-border-color: #fde047;
+}
+
+.star-btn.bookmarked {
+    -fx-background-color: #fef08a;
+    -fx-text-fill: #ca8a04;
+    -fx-border-color: #eab308;
+    -fx-effect: dropshadow(gaussian, rgba(234, 179, 8, 0.3), 6, 0, 0, 1);
+}
+
 /* Go Button */
 .go-btn {
     -fx-background-color: #3b82f6;
@@ -209,7 +241,7 @@
     -fx-effect: none;
 }
 
-/* History Button */
+/* Toolbar Buttons (History & Bookmarks) */
 .history-btn {
     -fx-background-color: #f1f5f9;
     -fx-text-fill: #334155;
@@ -255,7 +287,7 @@
 }
 
 /* ==========================================================================
-   History Side Panel
+   Side Panels (History & Bookmarks)
    ========================================================================== */
 .history-panel {
     -fx-background-color: #ffffff;

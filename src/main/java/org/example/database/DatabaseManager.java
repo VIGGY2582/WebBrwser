@@ -26,17 +26,27 @@ public class DatabaseManager {
                 dir.mkdirs();
             }
 
-            // Create history table
+            // Create tables
             try (Connection conn = getConnection();
                  Statement stmt = conn.createStatement()) {
 
-                String sql = "CREATE TABLE IF NOT EXISTS history (" +
-                             "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                             "title TEXT, " +
-                             "url TEXT, " +
-                             "visited_at DATETIME DEFAULT CURRENT_TIMESTAMP" +
-                             ");";
-                stmt.execute(sql);
+                // History table
+                String historySql = "CREATE TABLE IF NOT EXISTS history (" +
+                                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                    "title TEXT, " +
+                                    "url TEXT, " +
+                                    "visited_at DATETIME DEFAULT CURRENT_TIMESTAMP" +
+                                    ");";
+                stmt.execute(historySql);
+
+                // Bookmarks table
+                String bookmarksSql = "CREATE TABLE IF NOT EXISTS bookmarks (" +
+                                      "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                      "title TEXT, " +
+                                      "url TEXT UNIQUE, " +
+                                      "created_at DATETIME DEFAULT CURRENT_TIMESTAMP" +
+                                      ");";
+                stmt.execute(bookmarksSql);
             }
         } catch (SQLException e) {
             System.err.println("Database initialization error: " + e.getMessage());
