@@ -23,8 +23,8 @@ Prior to this module, the application operated with a single, hardcoded `WebView
 ## 4. Changes Made
 
 ### Files Created
-- [`src/main/java/org/example/browser/BrowserTab.java`](file:///c:/Users/T-rex/Desktop/BasicWebBrowser/src/main/java/org/example/browser/BrowserTab.java): Encapsulates an individual tab, its own `WebView` and `WebEngine`, navigation actions, and dynamic title/URL properties.
-- [`src/main/java/org/example/browser/BrowserManager.java`](file:///c:/Users/T-rex/Desktop/BasicWebBrowser/src/main/java/org/example/browser/BrowserManager.java): Manages the list of open tabs, handles tab switching, creates/closes tabs, and renders the Tab Bar UI component.
+- [`src/main/java/org/example/browser/BrowserTab.java`](file:///c:/Users/T-rex/Desktop/BasicWebBrowser/src/main/java/org/example/browser/BrowserTab.java): Encapsulates an individual tab, its own `WebView` and `WebEngine`, navigation actions, dispose cleanup, and dynamic title/URL properties.
+- [`src/main/java/org/example/browser/BrowserManager.java`](file:///c:/Users/T-rex/Desktop/BasicWebBrowser/src/main/java/org/example/browser/BrowserManager.java): Manages the collection of open tabs, persistent `StackPane` WebView container, tab switching, tab creation/closure, and renders the Tab Bar UI component.
 
 ### Files Modified
 - [`src/main/java/org/example/App.java`](file:///c:/Users/T-rex/Desktop/BasicWebBrowser/src/main/java/org/example/App.java): Refactored to delegate tab management and WebView hosting to `BrowserManager`. Bound browser navigation buttons, URL text field, and progress bar dynamically to the currently selected tab.
@@ -39,13 +39,15 @@ Prior to this module, the application operated with a single, hardcoded `WebView
 - `BrowserTab.reload()`: Reloads the active tab's WebEngine.
 - `BrowserTab.goBack()` & `BrowserTab.goForward()`: Navigates back and forward with history boundary safeguards.
 - `BrowserTab.loadHome()`: Loads the built-in StudySphere home dashboard.
+- `BrowserTab.dispose()`: Cleans up WebEngine content when a tab is closed.
 - `BrowserTab.getWebView()` & `BrowserTab.getWebEngine()`: Accessors for WebView and WebEngine.
 - `BrowserTab.titleProperty()` & `BrowserTab.urlProperty()`: Observable properties for real-time synchronization.
-- `BrowserManager.createNewTab()` / `createNewTab(String initialUrl)`: Creates and selects a new tab.
+- `BrowserManager.createNewTab()` / `createNewTab(String initialUrl)`: Creates and selects a new tab, adding its WebView to the persistent container.
 - `BrowserManager.closeTab(BrowserTab tab)`: Closes tab, selects adjacent tab, or creates a new default tab if the last tab is closed.
-- `BrowserManager.setActiveTab(BrowserTab tab)`: Switches active tab selection.
+- `BrowserManager.setActiveTab(BrowserTab tab)`: Switches active tab selection and toggles WebView visibility.
 - `BrowserManager.getActiveTab()` & `BrowserManager.activeTabProperty()`: Accessors for active tab.
 - `BrowserManager.getTabBar()`: Returns the Tab Bar JavaFX UI component.
+- `BrowserManager.getWebViewContainer()`: Returns the persistent `StackPane` holding tab WebViews.
 
 ### UI & CSS Changes
 - Integrated a sleek tab bar above the existing navigation bar.
@@ -69,7 +71,10 @@ App (JavaFX Application)
  │    └── Progress Bar (Bound to active tab's LoadWorker)
  │
  ├── Center (BorderPane.setCenter)
- │    └── Active BrowserTab.getWebView()
+ │    └── Persistent StackPane (BrowserManager.getWebViewContainer())
+ │         ├── Tab 1 WebView [ visible=true / toFront() ]
+ │         ├── Tab 2 WebView [ visible=false ]
+ │         └── Tab N WebView [ visible=false ]
  │
  └── BrowserManager
       ├── activeTab: ObjectProperty<BrowserTab>
@@ -83,8 +88,8 @@ App (JavaFX Application)
 
 ## 6. How Tab Switching Works
 1. **User Interaction**: Clicking any tab in the tab bar invokes `browserManager.setActiveTab(tab)`.
-2. **State Propagation**: `activeTabProperty()` notifies `App.java`'s change listener.
-3. **View Replacement**: `root.setCenter(newTab.getWebView())` smoothly swaps the visible browser viewport to the selected tab's own `WebView`.
+2. **State Propagation**: `activeTabProperty()` notifies `App.java`'s change listener and `BrowserManager.updateActiveTabDisplay()`.
+3. **Viewport Switching**: In the persistent `StackPane`, the selected tab's `WebView` is marked visible (`setVisible(true)`) and brought to front (`toFront()`), while inactive WebViews are hidden. All WebViews remain attached to the scene graph to prevent native rendering texture drops.
 4. **Control Synchronization**:
    - The address bar is updated to `newTab.getUrl()`.
    - The window title is updated to `newTab.getTitle() + " - StudySphere Browser"`.
@@ -132,6 +137,7 @@ The clean encapsulation of `BrowserTab` and `BrowserManager` enables future stud
 ## 9. Testing & Verification
 
 The following verification tests were performed and confirmed:
+- **Compilation**: Verified via `mvn clean compile` — 3 source files compiled with **BUILD SUCCESS** (0 errors).
 - **Create Tab**: Verified clicking `+` creates a new tab with the StudySphere start dashboard.
 - **Switch Tabs**: Verified clicking tabs switches the active `WebView` and updates the URL bar and window title.
 - **Independent Navigation**: Verified that browsing `github.com` in Tab 1 and `wikipedia.org` in Tab 2 maintains distinct history and states.

@@ -1,6 +1,7 @@
 package org.example;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -99,9 +100,10 @@ public class App extends Application {
         // Top Container: Tab Bar + Navigation Bar + Progress Bar
         VBox topContainer = new VBox(browserManager.getTabBar(), navBar, progressBar);
 
-        // Main Layout
+        // Main Layout with persistent webViewContainer in Center
         BorderPane root = new BorderPane();
         root.setTop(topContainer);
+        root.setCenter(browserManager.getWebViewContainer());
 
         // Change listeners to dynamically sync window title and URL bar with the active tab
         ChangeListener<String> titleListener = (obs, oldTitle, newTitle) -> {
@@ -126,9 +128,6 @@ public class App extends Application {
             }
 
             if (newTab != null) {
-                // Update center view to the active tab's WebView
-                root.setCenter(newTab.getWebView());
-
                 // Update URL field and window title to match new active tab
                 urlField.setText(newTab.getUrl());
                 titleListener.changed(newTab.titleProperty(), null, newTab.getTitle());
@@ -142,9 +141,6 @@ public class App extends Application {
                 progressBar.visibleProperty().bind(newTab.getWebEngine().getLoadWorker().runningProperty());
             }
         });
-
-        // Create the initial default tab
-        browserManager.createNewTab();
 
         // Scene & Window setup
         Scene scene = new Scene(root, 1200, 800);
@@ -161,6 +157,9 @@ public class App extends Application {
         stage.setScene(scene);
         stage.setTitle("StudySphere Browser");
         stage.show();
+
+        // Create the initial default tab after stage is shown and sized
+        Platform.runLater(browserManager::createNewTab);
     }
 
     /**

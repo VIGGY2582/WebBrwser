@@ -12,22 +12,24 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Manages the collection of BrowserTabs, tab switching, tab closure,
- * and renders the Tab Bar UI component.
+ * and hosts the persistent WebView container.
  */
 public class BrowserManager {
 
     private final ObservableList<BrowserTab> tabs = FXCollections.observableArrayList();
     private final ObjectProperty<BrowserTab> activeTab = new SimpleObjectProperty<>();
 
-    // UI Components for the Tab Bar
+    // UI Components for the Tab Bar and Viewport
     private final HBox tabContainer = new HBox(4);
     private final HBox tabBar = new HBox(6);
+    private final StackPane webViewContainer = new StackPane();
     private final Map<BrowserTab, HBox> tabUiMap = new HashMap<>();
 
     public BrowserManager() {
@@ -53,8 +55,8 @@ public class BrowserManager {
         tabBar.getStyleClass().add("tab-bar-container");
         tabBar.getChildren().addAll(scrollPane, newTabBtn);
 
-        // Update UI styling whenever active tab changes
-        activeTab.addListener((obs, oldTab, newTab) -> updateTabStyles());
+        // Update UI styling and WebView visibility whenever active tab changes
+        activeTab.addListener((obs, oldTab, newTab) -> updateActiveTabDisplay());
     }
 
     public BrowserTab createNewTab() {
@@ -64,6 +66,9 @@ public class BrowserManager {
     public BrowserTab createNewTab(String initialUrl) {
         BrowserTab tab = new BrowserTab(initialUrl);
         tabs.add(tab);
+
+        // Add WebView to the persistent container
+        webViewContainer.getChildren().add(tab.getWebView());
 
         HBox tabUi = createTabUi(tab);
         tabUiMap.put(tab, tabUi);
@@ -79,8 +84,11 @@ public class BrowserManager {
         int index = tabs.indexOf(tab);
         boolean wasActive = (tab == getActiveTab());
 
-        // Remove from list & UI
+        // Remove from list, container & UI
         tabs.remove(tab);
+        webViewContainer.getChildren().remove(tab.getWebView());
+        tab.dispose();
+
         HBox ui = tabUiMap.remove(tab);
         if (ui != null) {
             tabContainer.getChildren().remove(ui);
@@ -134,8 +142,10 @@ public class BrowserManager {
         return tabBox;
     }
 
-    private void updateTabStyles() {
+    private void updateActiveTabDisplay() {
         BrowserTab current = getActiveTab();
+
+        // Update tab bar buttons styling
         for (Map.Entry<BrowserTab, HBox> entry : tabUiMap.entrySet()) {
             HBox ui = entry.getValue();
             if (entry.getKey() == current) {
@@ -144,6 +154,17 @@ public class BrowserManager {
                 }
             } else {
                 ui.getStyleClass().remove("active-tab");
+            }
+        }
+
+        // Update WebViews in StackPane
+        for (BrowserTab tab : tabs) {
+            boolean isActive = (tab == current);
+            tab.getWebView().setVisible(isActive);
+            tab.getWebView().setDisable(!isActive);
+            if (isActive) {
+                tab.getWebView().toFront();
+                tab.getWebView().requestFocus();
             }
         }
     }
@@ -168,5 +189,9 @@ public class BrowserManager {
 
     public Node getTabBar() {
         return tabBar;
+    }
+
+    public StackPane getWebViewContainer() {
+        return webViewContainer;
     }
 }

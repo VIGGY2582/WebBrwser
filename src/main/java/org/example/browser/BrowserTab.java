@@ -1,5 +1,6 @@
 package org.example.browser;
 
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.web.WebEngine;
@@ -141,7 +142,7 @@ public class BrowserTab {
         this.webEngine = webView.getEngine();
 
         initListeners();
-        loadHome();
+        Platform.runLater(this::loadHome);
     }
 
     public BrowserTab(String initialUrl) {
@@ -150,9 +151,9 @@ public class BrowserTab {
 
         initListeners();
         if (initialUrl == null || initialUrl.trim().isEmpty()) {
-            loadHome();
+            Platform.runLater(this::loadHome);
         } else {
-            load(initialUrl);
+            Platform.runLater(() -> load(initialUrl));
         }
     }
 
@@ -209,6 +210,13 @@ public class BrowserTab {
         webEngine.loadContent(DEFAULT_HOME_HTML);
         title.set("StudySphere");
         url.set("");
+    }
+
+    public void dispose() {
+        try {
+            webEngine.loadContent("");
+        } catch (Exception ignored) {
+        }
     }
 
     // --- Getters for core components and properties ---
